@@ -137,9 +137,9 @@ export default function Footer() {
             display: 'flex',
             flexDirection: 'row',
             alignItems: 'center',
-            marginTop:-15
+            // marginTop:-15
           }}>
-            <img src={IMAGES.Logo} 
+            <img src={IMAGES.NT} 
             alt="logo"
             style={{
               height: 30,
@@ -158,14 +158,14 @@ export default function Footer() {
               backgroundColor: COLORS.transparent,
               borderWidth: 0,
               cursor: "pointer",
-              marginTop:20
+              // marginTop:20
 
             }}
             onClick={() => {
               window.open("https://nerdtech.in/")
             }}
           >
-            Nerdtech
+            &nbsp;Nerdtech
           </button>
           </div>
           <p style={{
