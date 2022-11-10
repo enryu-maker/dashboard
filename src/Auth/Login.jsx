@@ -27,7 +27,7 @@ export const Login = () => {
         }} >
             <Helmet>
                 <title>Admin : Login</title>
-                <link rel="canonical" href="https://http://localhost:3000/login" />
+                <link rel="canonical" href="https://http://localhost:3000/home" />
             </Helmet>
             <img src={IMAGES.Logo} style={{
                 alignSelf: "center",
