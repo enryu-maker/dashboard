@@ -5,6 +5,7 @@ import { Home } from './Home/Home';
 import SideNav from './Component.js/SideNav';
 import { COLORS } from './Theme/Theme';
 import { SideNavModal } from './Component.js/SideNavModal';
+import { Route } from 'react-router-dom';
 const App = () => {
   const [show, setShow] = React.useState(false)
   const [Name, setName] = React.useState("Home")
@@ -15,7 +16,7 @@ const App = () => {
       width: "100%",
       alignSelf: "center",
       // justifyContent:"space-between",
-      backgroundColor: COLORS.layout
+      backgroundColor: COLORS.lightGray1
     }}>
       <SideNav show={show} setShow={setShow} Name={Name} setName={setName} setComp={setComp} />
       {

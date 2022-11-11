@@ -3,7 +3,7 @@ import { COLORS, FONTS, SIZES } from '../Theme/Theme'
 import { IMAGES } from '../Theme/Image'
 import useMediaQuery from '../utils/useMediaQuery'
 import "../CSS/constant.css"
-import { AiOutlineHome, AiOutlineSetting, AiOutlineUser, AiOutlineLogout, AiOutlineMenu} from "react-icons/ai";
+import { AiOutlineLineChart, AiOutlineSetting, AiOutlineUser, AiOutlineLogout, AiOutlineMenu} from "react-icons/ai";
 export default function SideNav({
     show,
     setShow,
@@ -52,16 +52,26 @@ export default function SideNav({
                     HerdHelp Admin
                 </p>
                 </div>
-                :<div style={{
+                :
+                <div style={{
                         display: 'flex',
-                        flexDirection: 'column',
-                        // justifyContent: 'center',
-                        alignItems: 'center',
+                        // flexDirection: 'row',
+                        justifyContent: "space-between",
+                        // alignItems: 'center',
                         width: '20%',
                         backgroundColor: COLORS.layout,
+
                         height: '100vh',
                     }}>
-                        <img src={IMAGES.Logo} alt="logo" style={{
+                    <div style={{
+                        display:"flex",
+                        flexDirection:"column",
+                        alignItems:"center",
+                        width:"100%",
+                        // alignSelf:"center",
+                        backgroundColor: COLORS.layout,
+                    }}>
+                    <img src={IMAGES.Logo} alt="logo" style={{
                             alignSelf: "center",
                             height: 70,
                             width: "100%",
@@ -87,7 +97,7 @@ export default function SideNav({
                                 ...FONTS.h3,
                                 paddingInline: 20,
                                 paddingBlock: 10,
-                                borderRadius:SIZES.base,
+                                // borderRadius:SIZES.base,
                                 width: '80%',
                                 backgroundColor: Name==="Home"?COLORS.transparentPrimary:COLORS.transparent,
                                 alignSelf:"center",
@@ -99,7 +109,7 @@ export default function SideNav({
                                 setName("Home")
                             }}
                             >
-                                <AiOutlineHome />&nbsp;Dashboard
+                                <AiOutlineLineChart />&nbsp;Dashboard
                             </button>
                             <button 
                             className='button'
@@ -114,7 +124,7 @@ export default function SideNav({
                                 paddingInline: 20,
                                 paddingBlock: 10,
                                 letterSpacing:2,
-                                borderRadius:SIZES.base,
+                                // borderRadius:SIZES.base,
                                 width: '80%',
                                 backgroundColor: Name==="Profile"?COLORS.transparentPrimary:COLORS.transparent,
                                 alignSelf:"center",
@@ -140,7 +150,7 @@ export default function SideNav({
 
                                 paddingInline: 20,
                                 paddingBlock: 10,
-                                borderRadius:SIZES.base,
+                                // borderRadius:SIZES.base,
                                 width: '80%',
                                 backgroundColor: Name==="Setting"?COLORS.Primary:COLORS.transparent,
                                 alignSelf:"center",
@@ -165,7 +175,7 @@ export default function SideNav({
                                 paddingInline: 20,
                                 paddingBlock: 10,
                                 letterSpacing:2,
-                                borderRadius:SIZES.base,
+                                // borderRadius:SIZES.base,
                                 width: '80%',
                                 // backgroundColor: Name==="Logout"?COLORS.layout:COLORS.transparent,
                                 alignSelf:"center",
@@ -173,7 +183,15 @@ export default function SideNav({
                             }}>
                                 <AiOutlineLogout color={COLORS.red} />&nbsp;Logout
                             </button>
+                            </div>
+                            
+                        
                         </div>
+                        <div style={{
+                                height:"100vh",
+                                width:2.5,
+                                backgroundColor:COLORS.lightGray1
+                            }}/>
                         
                     </div>
             }

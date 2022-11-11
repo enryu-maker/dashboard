@@ -24,7 +24,7 @@ export const TitleCard = ({
         // height:"150px",
         width:mobile ? !matches ? 700 : 1000 : 350,
         margin:5,
-        backgroundColor:COLORS.transparentPrimary,
+        backgroundColor:COLORS.lightGray1,
         alignSelf:"center",
         ...container
       }}
@@ -38,9 +38,9 @@ export const TitleCard = ({
             paddingInline:20,
             paddingBlock:5,
             ...FONTS.body2,
-            color:COLORS.white
+            color:COLORS.black
         }}>
-           <Icon size={26} color={COLORS.white} />&nbsp;{label}
+           <Icon size={26} color={COLORS.black} />&nbsp;{label}
         </p>
         
         {appendComponent}

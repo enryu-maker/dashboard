@@ -68,7 +68,7 @@ const pdata = [
         flexDirection:"column",
         justifyContent: "center",
         alignItems: "center",
-
+        backgroundColor:COLORS.layout,
         ...FONTS.body2,
       }}>
 
@@ -80,8 +80,8 @@ const pdata = [
         }}
         appendComponent={
           <LineChart width={mobile ? !matches ? 700 : 900 : 350} height={400} data={pdata} margin={{ top: 25, right: 30, bottom: 50, left: -15 }} >
-                        <CartesianGrid strokeDasharray="3 3" stroke={COLORS.lightGray1} />
-                        <XAxis dataKey={"name"} angle={!matches? 0 : -270} tickMargin={!matches? 10 : 30} style={{
+                        <CartesianGrid strokeDasharray="3 3" stroke={COLORS.transparentPrimary} />
+                        <XAxis dataKey={"name"} angle={matches? 0 : -270} tickMargin={matches? 10 : 30} style={{
                             ...FONTS.h4,
                             backgroundColor:COLORS.Primary
                         }}
@@ -95,7 +95,7 @@ const pdata = [
                             
                         <Tooltip content={<CustomTooltip />} />
                          {/* <Legend/> */}
-                        <Line type="monotoneX" dataKey="student" stroke={COLORS.white} strokeWidth={2} />
+                        <Line type="monotoneX" dataKey="student" stroke={COLORS.Primary} strokeWidth={2} />
                     </LineChart>
         }
         />
@@ -112,8 +112,8 @@ const pdata = [
           }}>
            
           <LineChart width={mobile ? !matches ? 700 : 500 : 350} height={400} data={pdata} margin={{ top: 25, right: 30, bottom: 50, left: -15 }} >
-                        <CartesianGrid strokeDasharray="3 3" stroke={COLORS.lightGray1} />
-                        <XAxis dataKey={"name"} angle={!matches? 0 : -270} tickMargin={!matches? 10 : 30} style={{
+                        <CartesianGrid strokeDasharray="3 3" stroke={COLORS.transparentPrimary} />
+                        <XAxis dataKey={"name"} angle={matches? 0 : -270} tickMargin={matches? 10 : 30} style={{
 
                             ...FONTS.h4,
                             backgroundColor:COLORS.Primary
@@ -128,11 +128,11 @@ const pdata = [
                             
                         <Tooltip content={<CustomTooltip />} />
                          {/* <Legend/> */}
-                        <Line type="monotoneX" dataKey="student" stroke={COLORS.white} strokeWidth={2} />
+                        <Line type="monotoneX" dataKey="student" stroke={COLORS.Primary} strokeWidth={2} />
                     </LineChart>
                     <LineChart width={mobile ? !matches ? 700 : 500 : 350} height={400} data={pdata} margin={{ top: 25, right: 30, bottom: 50, left: -15 }} >
-                        <CartesianGrid strokeDasharray="3 3" stroke={COLORS.lightGray1} />
-                        <XAxis dataKey={"name"} angle={!matches? 0 : -270} tickMargin={!matches? 10 : 30} style={{
+                        <CartesianGrid strokeDasharray="3 3" stroke={COLORS.transparentPrimary} />
+                        <XAxis dataKey={"name"} angle={matches? 0 : -270} tickMargin={matches? 10 : 30} style={{
 
                             ...FONTS.h4,
                             backgroundColor:COLORS.Primary
@@ -147,21 +147,21 @@ const pdata = [
                             
                         <Tooltip content={<CustomTooltip />} />
                          {/* <Legend/> */}
-                        <Line type="monotoneX" dataKey="student" stroke={COLORS.white} strokeWidth={2} />
+                        <Line type="monotoneX" dataKey="student" stroke={COLORS.Primary} strokeWidth={2} />
                     </LineChart>
                     </div>
         }
         />
         <TitleCard
         Icon={AiOutlineUser}
-        label={"Active Users"}
+        label={"Animals"}
         onPress={()=>{
           // alert("Active User")
         }}
         appendComponent={
           <LineChart width={mobile ? !matches ? 700 : 900 : 350} height={400} data={pdata} margin={{ top: 25, right: 30, bottom: 50, left: -15 }} >
-                        <CartesianGrid strokeDasharray="3 3" stroke={COLORS.lightGray1} />
-                        <XAxis dataKey={"name"} angle={!matches? 0 : -270} tickMargin={!matches? 10 : 30} style={{
+                        <CartesianGrid strokeDasharray="3 3" stroke={COLORS.transparentPrimary} />
+                        <XAxis dataKey={"name"} angle={matches? 0 : -270} tickMargin={matches? 10 : 30} style={{
                             ...FONTS.h4,
                             backgroundColor:COLORS.Primary
                         }}
@@ -175,7 +175,7 @@ const pdata = [
                             
                         <Tooltip content={<CustomTooltip />} />
                          {/* <Legend/> */}
-                        <Line type="monotoneX" dataKey="student" stroke={COLORS.white} strokeWidth={2} />
+                        <Line type="monotoneX" dataKey="student" stroke={COLORS.Primary} strokeWidth={2} />
                     </LineChart>
         }
         />
