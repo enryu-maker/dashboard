@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { COLORS,SIZES,FONTS } from '../Theme/Theme'
+import { COLORS,FONTS } from '../Theme/Theme'
 
 export default function TextButton({
     disabled,

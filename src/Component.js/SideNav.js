@@ -3,7 +3,6 @@ import { COLORS, FONTS, SIZES } from '../Theme/Theme'
 import { IMAGES } from '../Theme/Image'
 import useMediaQuery from '../utils/useMediaQuery'
 import "../CSS/constant.css"
-import { SideNavModal } from './SideNavModal'
 import { AiOutlineHome, AiOutlineSetting, AiOutlineUser, AiOutlineLogout, AiOutlineMenu} from "react-icons/ai";
 export default function SideNav({
     show,
@@ -13,12 +12,15 @@ export default function SideNav({
     Name
 }) {
     const matches = useMediaQuery('(max-width:820px)')
-    const mobile = useMediaQuery('(min-width:600px)')
+    // const mobile = useMediaQuery('(min-width:600px)')
     return (
         <>
             {
                 matches ? 
+              
                 <div style={{
+                    position:"fixed",
+                    top:0,
                     display: 'flex',
                     flexDirection: 'row',
                     justifyContent: 'space-between',
@@ -26,6 +28,8 @@ export default function SideNav({
                     width: '100%',
                     backgroundColor: COLORS.Primary,
                     height: 60,
+                   
+                   
                 }}>
                 <button className='button' style={{
                     display: 'flex',
@@ -40,6 +44,13 @@ export default function SideNav({
                 >
                 <AiOutlineMenu size={28} color={COLORS.white} /> 
                 </button>
+                <p style={{
+                    ...FONTS.body1,
+                    color:COLORS.white,
+                    marginRight:10
+                }}>
+                    HerdHelp Admin
+                </p>
                 </div>
                 :<div style={{
                         display: 'flex',
@@ -47,15 +58,15 @@ export default function SideNav({
                         // justifyContent: 'center',
                         alignItems: 'center',
                         width: '20%',
-                        backgroundColor: COLORS.Primary,
+                        backgroundColor: COLORS.layout,
                         height: '100vh',
                     }}>
-                        <img src={IMAGES.Logo} style={{
+                        <img src={IMAGES.Logo} alt="logo" style={{
                             alignSelf: "center",
                             height: 70,
                             width: "100%",
-                            // paddingBlock: 20,
-                            backgroundColor: COLORS.transparentPrimary
+                            marginBlock: 20,
+                            backgroundColor: COLORS.layout
                         }} />
                         <div style={{
                             display: 'flex',
@@ -72,10 +83,10 @@ export default function SideNav({
                                 flexDirection: 'row',
                                 alignItems: 'center',
                                 justifyContent: 'flex-start',
-                                color: COLORS.white,
-                                ...FONTS.body2,
+                                color: Name==="Home"? COLORS.black : COLORS.gray,
+                                ...FONTS.h3,
                                 paddingInline: 20,
-                                paddingBlock: 5,
+                                paddingBlock: 10,
                                 borderRadius:SIZES.base,
                                 width: '80%',
                                 backgroundColor: Name==="Home"?COLORS.transparentPrimary:COLORS.transparent,
@@ -97,10 +108,11 @@ export default function SideNav({
                                 flexDirection: 'row',
                                 alignItems: 'center',
                                 justifyContent: 'flex-start',
-                                color: COLORS.white,
-                                ...FONTS.body2,
+                                color: Name==="Profile"?COLORS.black:COLORS.gray,
+                                ...FONTS.h3,
+
                                 paddingInline: 20,
-                                paddingBlock: 5,
+                                paddingBlock: 10,
                                 letterSpacing:2,
                                 borderRadius:SIZES.base,
                                 width: '80%',
@@ -122,14 +134,15 @@ export default function SideNav({
                                 flexDirection: 'row',
                                 alignItems: 'center',
                                 justifyContent: 'flex-start',
-                                color: COLORS.white,
+                                color: Name==="Setting"? COLORS.black:COLORS.gray,
                                 letterSpacing:2,
-                                ...FONTS.body2,
+                                ...FONTS.h3,
+
                                 paddingInline: 20,
-                                paddingBlock: 5,
+                                paddingBlock: 10,
                                 borderRadius:SIZES.base,
                                 width: '80%',
-                                backgroundColor: Name==="Setting"?COLORS.transparentPrimary:COLORS.transparent,
+                                backgroundColor: Name==="Setting"?COLORS.Primary:COLORS.transparent,
                                 alignSelf:"center",
 
                             }}
@@ -147,20 +160,21 @@ export default function SideNav({
                                 flexDirection: 'row',
                                 alignItems: 'center',
                                 justifyContent: 'flex-start',
-                                color: COLORS.white,
-                                ...FONTS.body2,
+                                color: COLORS.red,
+                                ...FONTS.h3,
                                 paddingInline: 20,
-                                paddingBlock: 5,
+                                paddingBlock: 10,
                                 letterSpacing:2,
                                 borderRadius:SIZES.base,
                                 width: '80%',
-                                backgroundColor: Name==="Logout"?COLORS.layout:COLORS.transparent,
+                                // backgroundColor: Name==="Logout"?COLORS.layout:COLORS.transparent,
                                 alignSelf:"center",
 
                             }}>
                                 <AiOutlineLogout color={COLORS.red} />&nbsp;Logout
                             </button>
                         </div>
+                        
                     </div>
             }
         </>

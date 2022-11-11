@@ -1,7 +1,7 @@
 import React from 'react'
 import InputForm from '../Component.js/FormInput'
 import TextButton from '../Component.js/TextButton'
-import { COLORS, FONTS, SIZES } from '../Theme/Theme'
+import { COLORS, FONTS } from '../Theme/Theme'
 import useMediaQuery from '../utils/useMediaQuery'
 import { IMAGES } from '../Theme/Image'
 import { Helmet } from 'react-helmet-async';
@@ -29,7 +29,7 @@ export const Login = () => {
                 <title>Admin : Login</title>
                 <link rel="canonical" href="https://http://localhost:3000/home" />
             </Helmet>
-            <img src={IMAGES.Logo} style={{
+            <img src={IMAGES.Logo} alt="logo" style={{
                 alignSelf: "center",
                 height: 80,
                 width: !mobile ? "88%" : matches ? "58%" : "400px",
