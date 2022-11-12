@@ -58,7 +58,7 @@ export default function SideNav({
                         // flexDirection: 'row',
                         justifyContent: "space-between",
                         // alignItems: 'center',
-                        width: '20%',
+                        width: '25%',
                         backgroundColor: COLORS.layout,
 
                         height: '100vh',
