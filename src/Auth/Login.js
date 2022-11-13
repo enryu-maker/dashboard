@@ -8,7 +8,9 @@ import { Helmet } from 'react-helmet-async';
 import Footer from '../Component.js/Footer'
 import axios from 'axios'
 import { useDispatch } from 'react-redux'
-import { Login_Function } from '../Store/actions'
+import { Login_Function } from '../Store/actions';
+import AlertCard from '../Component.js/AlertCard'
+import { useAlert } from 'react-alert';
 export const Login = () => {
     const matches = useMediaQuery('(max-width:820px)')
     const mobile = useMediaQuery('(min-width:600px)')
@@ -17,11 +19,12 @@ export const Login = () => {
     const [check, setCheck] = React.useState(false)
     const [Loading, setLoading] = React.useState(false)
     const dispatch = useDispatch()
-    
+    const alert = useAlert()
     function isEnableSignIn() {
         return email !== "" && password !== "";
       }
       async function login() {
+        
         if (isEnableSignIn()) {
           setLoading(true);
     
@@ -53,7 +56,9 @@ export const Login = () => {
               }
             });
         } else {
+          alert.error(<AlertCard msg={"Invalid Input"} type={false} />)
           setLoading(false);
+
         }
       }
 
@@ -141,9 +146,7 @@ export const Login = () => {
                 </div>
 
                 <TextButton label={"SIGN IN"} 
-                onPress={()=>{
-                    login()
-                }}
+                onPress={login}
                 />
 
             </div>

@@ -49,7 +49,7 @@ export default function InputForm({
                         height: 20,
                     }}
                 >
-                    <text style={{ color: COLORS.white, ...FONTS.h3 }}>{label}</text>
+                    <p style={{ color: COLORS.white, ...FONTS.h3 }}>{label}</p>
                 </div>
                 <div
                     style={{
