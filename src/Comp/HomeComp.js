@@ -1,9 +1,11 @@
 import React from 'react'
 import { TitleCard } from '../Component.js/TitleCard'
-import { COLORS, FONTS, SIZES } from '../Theme/Theme'
+import { COLORS, FONTS } from '../Theme/Theme'
 import useMediaQuery from '../utils/useMediaQuery'
-import { AiOutlineHeart, AiOutlineHome, AiOutlineSetting, AiOutlineUser, AiOutlineLogout, AiOutlineMenu } from "react-icons/ai";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Label, ResponsiveContainer, Bar, BarChart } from 'recharts';
+import { AiOutlineUser } from "react-icons/ai";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, PieChart, Pie, Cell } from 'recharts';
+import { TbPig } from 'react-icons/tb'
+
 export default function HomeComp() {
     const matches = useMediaQuery('(min-width:819px)')
     const mobile = useMediaQuery('(min-width:600px)')
@@ -11,7 +13,7 @@ export default function HomeComp() {
         if (active && payload && payload.length) {
             return (
                 <div style={{
-                    backgroundColor: COLORS.white,
+                    backgroundColor: COLORS.transparentPrimary2,
                     ...FONTS.h3,
                     padding: "2px",
                     borderRadius: "2px"
@@ -122,6 +124,62 @@ export default function HomeComp() {
             fees: 5
         },
     ];
+
+    const animal = [
+        {
+            name: 'Cow',
+            student: 130,
+
+        },
+        {
+            name: 'Goat',
+            student: 70,
+
+        },
+        {
+            name: 'Pig',
+            student: 50,
+
+        },
+        {
+            name: 'Sheep',
+            student: 90,
+
+        },
+        {
+            name: 'Rabbit',
+            student: 100,
+
+        },
+        {
+            name: 'Horse',
+            student: 80,
+
+        },
+
+    ]
+
+    const pieData = [
+        { name: 'Android', value: 300 },
+        { name: 'IOS', value: 300 },
+    ]
+    const color = [COLORS.transparentPrimary,COLORS.transparentPrimary2, '#FFBB28', '#FF8042']
+    const RADIAN = Math.PI / 180;
+    const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent,name, index }) => {
+        const radius = innerRadius + (outerRadius - innerRadius) * 0.3;
+        const x = cx + radius * Math.cos(-midAngle * RADIAN);
+        const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+        return (
+            <text 
+            style={{
+                ...FONTS.h3,
+            }}
+            x={x-15} y={y} fill={COLORS.black} textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central">
+                {`${name} ${ (percent * 100).toFixed(0)}%`}
+            </text>
+        );
+    };
     return (
 
         <div style={{
@@ -216,28 +274,23 @@ export default function HomeComp() {
                             width: "2.5px",
                             backgroundColor: COLORS.lightGray1
                         }} />
-                        <LineChart width={mobile ? !matches ? 700 : 500 : 350} height={400} data={Wdata} margin={{ top: 25, right: 30, bottom: mobile ? 10 : 50, left: -15 }} >
-                            <CartesianGrid strokeDasharray="3 3" stroke={COLORS.transparentPrimary} />
-                            <XAxis dataKey={"name"} angle={matches ? 0 : -270} tickMargin={matches ? 10 : 30} style={{
+                        {/* <ResponsiveContainer width="100%" height="100%"> */}
+                        <PieChart width={mobile ? !matches ? 700 : 500 : 350} height={350}>
+                            <Pie
+                                labelLine={false}
+                                paddingAngle={5}
+                                label={renderCustomizedLabel}
+                                isAnimationActive={false}
+                                data={pieData} dataKey="value" cx="50%" cy="50%" outerRadius={120} innerRadius={60}>
+                                {pieData.map((entry, index) => (
+                                    <Cell key={`cell-${index}`} fill={color[index % color.length]} />
+                                ))}
+                            </Pie>
+                            {/* <Tooltip/> */}
+                        </PieChart>
+                        {/* </ResponsiveContainer> */}
 
-                                ...FONTS.h4,
-                                backgroundColor: COLORS.Primary
-                            }}
-                            />
-                            <YAxis
-                                style={{
-                                    ...FONTS.h4,
 
-                                }}
-                            />
-
-                            <Tooltip content={<CustomTooltip />} />
-                            {/* <Legend/> */}
-                            <Line type="monotoneX" dataKey="student" stroke={COLORS.Primary} strokeWidth={2}
-                                dot={{ stroke: COLORS.Primary, strokeWidth: 1, r: 5, strokeDasharray: '' }}
-
-                            />
-                        </LineChart>
                     </div>
                 }
             />
@@ -247,13 +300,13 @@ export default function HomeComp() {
                 backgroundColor: COLORS.lightGray1
             }} />
             <TitleCard
-                Icon={AiOutlineUser}
+                Icon={TbPig}
                 label={"Animals"}
                 onPress={() => {
                     // alert("Active User")
                 }}
                 appendComponent={
-                    <LineChart width={mobile ? !matches ? 700 : 900 : 350} height={400} data={pdata} margin={{ top: 25, right: 30, bottom: mobile ? 10 : 50, left: -15 }} >
+                    <LineChart width={mobile ? !matches ? 700 : 900 : 350} height={400} data={animal} margin={{ top: 25, right: 30, bottom: mobile ? 10 : 50, left: -15 }} >
                         <CartesianGrid strokeDasharray="3 3" stroke={COLORS.transparentPrimary} />
                         <XAxis dataKey={"name"} angle={matches ? 0 : -270} tickMargin={matches ? 10 : 30} style={{
                             ...FONTS.h4,

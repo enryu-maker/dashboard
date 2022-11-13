@@ -1,10 +1,11 @@
 import React from 'react'
 import Modal from 'react-modal';
 import useMediaQuery from '../utils/useMediaQuery';
-import { COLORS, FONTS, SIZES } from '../Theme/Theme';
+import { COLORS, FONTS } from '../Theme/Theme';
 import { AiOutlineClose } from "react-icons/ai";
 import { AiOutlineHome, AiOutlineSetting, AiOutlineUser, AiOutlineLogout } from "react-icons/ai";
 import { GoIssueOpened } from 'react-icons/go'
+import { TbPig } from 'react-icons/tb'
 
 import '../CSS/constant.css'
 import { IMAGES } from '../Theme/Image';
@@ -60,17 +61,17 @@ export const SideNavModal = ({
                 display: 'flex',
                 alignItems: "center",
                 flexDirection: "row",
-                justifyContent: "space-evenly",
+                justifyContent: "space-between",
                 height: 60,
                 width: "100%",
                 backgroundColor:COLORS.Primary,
-                paddingBlock: 2,
+                // paddingBlock: 2,
 
             }}>
                 <img src={IMAGES.LogoW} alt="logo" style={{
                     alignSelf: "center",
-                    height: 80,
-                    width: "100%",
+                    height: 70,
+                    marginInline: 20,
                     backgroundColor: COLORS.transparent
                 }} />
 
@@ -80,16 +81,14 @@ export const SideNavModal = ({
                         flexDirection: 'column',
                         justifyContent: 'center',
                         alignItems: 'center',
-                        height: 70,
-                        width: 70,
-                        marign: 5,
+                        marginInline: 20,
                         backgroundColor: COLORS.transparent
                     }}
                     onClick={() => {
                         setIsOpen(false)
                     }}
                 >
-                    <AiOutlineClose size={36} color={COLORS.white} />
+                    <AiOutlineClose size={28} color={COLORS.white} />
                 </button>
 
             </div>
@@ -121,7 +120,6 @@ export const SideNavModal = ({
                             flexDirection: 'row',
                             alignItems: 'center',
                             justifyContent: 'flex-start',
-                            color: COLORS.white,
                             ...FONTS.body2,
                             paddingInline: 20,
                             letterSpacing: 2,
@@ -175,7 +173,35 @@ export const SideNavModal = ({
                             flexDirection: 'row',
                             alignItems: 'center',
                             justifyContent: 'flex-start',
-                            color: COLORS.white,
+                        
+                            ...FONTS.body2,
+                            letterSpacing: 2,
+                            paddingInline: 20,
+                            paddingBlock: 5,
+                            width: !mobile ? '68%' : '78%',
+                            alignSelf: !mobile ? "flex-start" : "center",
+                            marginLeft: !mobile ? 50 : 0,
+                            // borderRadius: SIZES.base,
+                            backgroundColor: Name === "Setting" ? COLORS.transparentPrimary : COLORS.transparent,
+                            color: Name === "Setting" ? COLORS.black : COLORS.gray,
+
+
+                        }}
+                        onClick={() => {
+                            setComp(React.lazy(() => import("../Comp/Settings")))
+                            setName("Setting")
+                            setIsOpen(false)
+                        }}
+                    >
+                        <TbPig />&nbsp;Animals
+                    </button>
+                    <button
+                        className='button'
+                        style={{
+                            display: 'flex',
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            justifyContent: 'flex-start',
                             ...FONTS.body2,
                             letterSpacing: 2,
                             paddingInline: 20,
@@ -227,7 +253,7 @@ export const SideNavModal = ({
 
                             marginLeft: !mobile ? 50 : 0,
                             backgroundColor: Name === "About" ? COLORS.transparentPrimary : COLORS.transparent,
-                            alignSelf: "center",
+                            
 
                         }}
                         onClick={() => {
@@ -255,7 +281,7 @@ export const SideNavModal = ({
                             alignSelf: !mobile ? "flex-start" : "center",
                             marginLeft: !mobile ? 50 : 0,
                             backgroundColor: COLORS.transparent,
-                            alignSelf: "center",
+                            
 
                         }}>
                         <AiOutlineLogout color={COLORS.red} />&nbsp;Logout

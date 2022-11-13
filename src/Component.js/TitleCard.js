@@ -1,5 +1,5 @@
 import React from 'react'
-import { COLORS,FONTS, SIZES } from '../Theme/Theme'
+import { COLORS,FONTS } from '../Theme/Theme'
 import '../CSS/constant.css'
 import useMediaQuery from '../utils/useMediaQuery'
 export const TitleCard = ({

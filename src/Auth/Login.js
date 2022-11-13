@@ -6,14 +6,56 @@ import useMediaQuery from '../utils/useMediaQuery'
 import { IMAGES } from '../Theme/Image'
 import { Helmet } from 'react-helmet-async';
 import Footer from '../Component.js/Footer'
-
+import axios from 'axios'
+import { useDispatch } from 'react-redux'
+import { Login_Function } from '../Store/actions'
 export const Login = () => {
     const matches = useMediaQuery('(max-width:820px)')
     const mobile = useMediaQuery('(min-width:600px)')
     const [email, setEmail] = React.useState("")
     const [password, setPassword] = React.useState("")
     const [check, setCheck] = React.useState(false)
-
+    const [Loading, setLoading] = React.useState(false)
+    const dispatch = useDispatch()
+    
+    function isEnableSignIn() {
+        return email !== "" && password !== "";
+      }
+      async function login() {
+        if (isEnableSignIn()) {
+          setLoading(true);
+    
+          await axios
+            .post(
+              process.env.REACT_APP_BASE_URL + "/login/",
+              {
+                email: email,
+                password: password,
+              },
+              {
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              }
+            )
+            .then((response) => {
+              if (response.status === 200) {
+                dispatch(Login_Function(response.data.access))
+                setLoading(false);
+              } else {
+                setLoading(false);
+                
+              }
+            })
+            .catch((error) => {
+              if (error.response) {
+                setLoading(false);
+              }
+            });
+        } else {
+          setLoading(false);
+        }
+      }
 
     return (
         <div style={{
@@ -27,11 +69,11 @@ export const Login = () => {
         }} >
             <Helmet>
                 <title>Admin : Login</title>
-                <link rel="canonical" href="https://http://localhost:3000/home" />
+                <link rel="canonical" href="http://localhost:3000/" />
             </Helmet>
             <img src={IMAGES.LogoW} alt="logo" style={{
                 alignSelf: "center",
-                height: 80,
+                height: 100,
                 width: !mobile ? "88%" : matches ? "58%" : "400px",
                 paddingBlock:20
             }} />
@@ -98,7 +140,11 @@ export const Login = () => {
                     }}>Forget Password?</p>
                 </div>
 
-                <TextButton label={"SIGN IN"} />
+                <TextButton label={"SIGN IN"} 
+                onPress={()=>{
+                    login()
+                }}
+                />
 
             </div>
             {

@@ -7,12 +7,13 @@ import { COLORS } from './Theme/Theme';
 import { SideNavModal } from './Component.js/SideNavModal';
 
 import MinFooter from './Component.js/MinFooter';
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import { useSelector } from 'react-redux';
 const App = () => {
   const [show, setShow] = React.useState(false)
   const [Name, setName] = React.useState("Home")
   const [Comp, setComp] = React.useState(React.lazy(() => import("./Comp/HomeComp")))
-  const access =true
+ 
   
   
   const HomeNav = () => {
@@ -45,14 +46,14 @@ const App = () => {
     )
   }
   
- 
+  const access = useSelector(state => state.Reducers.access)
 
   return (
     
         <Routes>
             {
-                access===false?
-            <Route exact path="/" element={<Login />} />
+                access===null?
+            <Route exact path="/" element={<Login/>} />
             :
             <Route exact path="/" element={<HomeNav/>} />
             }

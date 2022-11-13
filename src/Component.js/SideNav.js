@@ -1,10 +1,13 @@
 import React from 'react'
-import { COLORS, FONTS, SIZES } from '../Theme/Theme'
+import { COLORS, FONTS } from '../Theme/Theme'
 import { IMAGES } from '../Theme/Image'
 import useMediaQuery from '../utils/useMediaQuery'
 import "../CSS/constant.css"
 import { AiOutlineLineChart, AiOutlineSetting, AiOutlineUser, AiOutlineLogout, AiOutlineMenu } from "react-icons/ai";
 import { GoIssueOpened } from 'react-icons/go'
+import { TbPig } from 'react-icons/tb'
+
+
 export default function SideNav({
     show,
     setShow,
@@ -37,8 +40,7 @@ export default function SideNav({
                             flexDirection: 'column',
                             justifyContent: 'center',
                             alignItems: 'center',
-                            // width: 50,
-                            // height: 50,
+                            
 
                             marginInline: 20,
 
@@ -48,9 +50,9 @@ export default function SideNav({
                         >
                             <AiOutlineMenu size={28} color={COLORS.white} />
                         </button>
-                        <img src={IMAGES.LogoW} alt="logo" style={{
+                        <img src={IMAGES.admin} alt="logo" style={{
                             alignSelf: "center",
-                            height: 70,
+                            height: 45,
                             // width: "100%",
                             marginInline: 20,
                             // backgroundColor: COLORS.white
@@ -149,7 +151,35 @@ export default function SideNav({
                                             setName("Profile")
                                         }}
                                     >
-                                        <AiOutlineUser />&nbsp;Profile
+                                        <AiOutlineUser />&nbsp;Users
+                                    </button>
+                                    <button
+                                        className='button'
+                                        style={{
+                                            display: 'flex',
+                                            flexDirection: 'row',
+                                            alignItems: 'center',
+                                            justifyContent: 'flex-start',
+                                            color: Name === "Profile" ? COLORS.black : COLORS.gray,
+                                            ...FONTS.h3,
+
+                                            paddingInline: 20,
+                                            paddingBlock: 10,
+                                            letterSpacing: 2.5,
+
+                                            // borderRadius:SIZES.base,
+                                            width: '80%',
+                                            backgroundColor: Name === "Profile" ? COLORS.transparentPrimary : COLORS.transparent,
+                                            alignSelf: "center",
+
+
+                                        }}
+                                        onClick={() => {
+                                            setComp(React.lazy(() => import("../Comp/Settings")))
+                                            setName("Setting")
+                                        }}
+                                    >
+                                        <TbPig />&nbsp;Animals
                                     </button>
                                     <button
                                         className='button'

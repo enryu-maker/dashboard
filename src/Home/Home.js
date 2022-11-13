@@ -1,16 +1,15 @@
 import React, { Suspense } from 'react';
-import SideNav from '../Component.js/SideNav'
+
 import { Helmet } from 'react-helmet-async'
 import { COLORS } from '../Theme/Theme'
 import useMediaQuery from '../utils/useMediaQuery'
 import Loading from '../Component.js/Loading';
-import { SideNavModal } from '../Component.js/SideNavModal'
+
 
 export const Home = ({
     Comp
 }) => {
     const matches = useMediaQuery('(max-width:820px)')
-    const mobile = useMediaQuery('(max-width:600px)')
    
 
     return (
@@ -35,7 +34,7 @@ export const Home = ({
  
                 marginTop:matches?60:0,
                 
-                backgroundColor: COLORS.layout,
+                backgroundColor: COLORS.white,
             }}>
 
                 <Suspense fallback={<Loading />}>
