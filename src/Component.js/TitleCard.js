@@ -11,7 +11,7 @@ export const TitleCard = ({
 }) => {
   const matches = useMediaQuery('(min-width:819px)')
   const mobile = useMediaQuery('(min-width:600px)')
-  console.log(mobile ? !matches ? 700 : 900 : 350)
+
 
   return (
     <button 
@@ -24,7 +24,7 @@ export const TitleCard = ({
         // height:"150px",
         width:mobile ? !matches ? 700 : 1000 : 350,
         margin:5,
-        backgroundColor:COLORS.lightGray1,
+        backgroundColor:COLORS.transparent,
         alignSelf:"center",
         ...container
       }}
@@ -38,9 +38,9 @@ export const TitleCard = ({
             paddingInline:20,
             paddingBlock:5,
             ...FONTS.body2,
-            color:COLORS.black
+            color:COLORS.gray
         }}>
-           <Icon size={26} color={COLORS.black} />&nbsp;{label}
+           <Icon size={26} color={COLORS.gray} />&nbsp;{label}
         </p>
         
         {appendComponent}

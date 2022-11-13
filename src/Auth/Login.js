@@ -29,7 +29,7 @@ export const Login = () => {
                 <title>Admin : Login</title>
                 <link rel="canonical" href="https://http://localhost:3000/home" />
             </Helmet>
-            <img src={IMAGES.Logo} alt="logo" style={{
+            <img src={IMAGES.LogoW} alt="logo" style={{
                 alignSelf: "center",
                 height: 80,
                 width: !mobile ? "88%" : matches ? "58%" : "400px",

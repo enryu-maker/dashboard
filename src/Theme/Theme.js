@@ -18,6 +18,7 @@ export const COLORS={
     red: "#ff4d4d",
     green: "#27AE60",
     layout:"#E6E2DD",
+    // E6E2DD
     yellow:'#ffdf00'
 }
 // 8c9de3
