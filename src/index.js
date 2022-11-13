@@ -7,25 +7,21 @@ import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './Store';
-import AlertTemplate from 'react-alert-template-basic'
-import { transitions, positions, Provider as AlertProvider } from 'react-alert'
+
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
-const options = {
-  position: positions.TOP_CENTER,
-  timeout: 5000,
-  offset: '30px',
-  transition: transitions.FADE,
-}
+
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-    <AlertProvider template={AlertTemplate} {...options}>
-    <BrowserRouter>
-    <HelmetProvider>
-    <App />
-    </HelmetProvider>
-    </BrowserRouter>
-    </AlertProvider>
+    
+        <BrowserRouter>
+          <HelmetProvider>
+            <App />
+          </HelmetProvider>
+        </BrowserRouter>
+
     </Provider>
   </React.StrictMode>
 );

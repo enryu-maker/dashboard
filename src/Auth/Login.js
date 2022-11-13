@@ -9,9 +9,12 @@ import Footer from '../Component.js/Footer'
 import axios from 'axios'
 import { useDispatch } from 'react-redux'
 import { Login_Function } from '../Store/actions';
-import AlertCard from '../Component.js/AlertCard'
-import { useAlert } from 'react-alert';
+import {toast, ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export const Login = () => {
+      // toast.configure()
+      
+    
     const matches = useMediaQuery('(max-width:820px)')
     const mobile = useMediaQuery('(min-width:600px)')
     const [email, setEmail] = React.useState("")
@@ -19,7 +22,7 @@ export const Login = () => {
     const [check, setCheck] = React.useState(false)
     const [Loading, setLoading] = React.useState(false)
     const dispatch = useDispatch()
-    const alert = useAlert()
+
     function isEnableSignIn() {
         return email !== "" && password !== "";
       }
@@ -56,7 +59,8 @@ export const Login = () => {
               }
             });
         } else {
-          alert.error(<AlertCard msg={"Invalid Input"} type={false} />)
+          toast.error('Invalid Input',
+           {position: toast.POSITION.TOP_CENTER})
           setLoading(false);
 
         }
@@ -153,6 +157,7 @@ export const Login = () => {
             {
                 !mobile?null:<Footer/>
             }
+             <ToastContainer />
         </div>
     )
 }
