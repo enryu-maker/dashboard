@@ -1,5 +1,5 @@
 const initialState={
-    access:null,
+    access:"null",
 }
 
 
