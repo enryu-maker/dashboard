@@ -142,7 +142,7 @@ export default function SideNav({
                                             paddingInline: 20,
                                             paddingBlock: 10,
                                             letterSpacing: 2.5,
-                                            borderRadius:SIZES.radius,
+                                            borderRadius:3,
 
                                             // borderRadius:SIZES.base,
                                             width: '80%',
@@ -166,7 +166,8 @@ export default function SideNav({
                                             justifyContent: 'flex-start',
                                             color: Name === "Animal" ? COLORS.black : COLORS.gray,
                                             ...FONTS.h3,
-                                            borderRadius:SIZES.radius,
+                                            borderRadius:3,
+
 
                                             paddingInline: 20,
                                             paddingBlock: 10,
@@ -195,7 +196,7 @@ export default function SideNav({
                                             justifyContent: 'flex-start',
                                             color: Name === "Setting" ? COLORS.black : COLORS.gray,
                                             letterSpacing: 2.5,
-                                            borderRadius:SIZES.radius,
+                                            borderRadius:3,
 
                                             ...FONTS.h3,
 
@@ -237,7 +238,7 @@ export default function SideNav({
                                             paddingInline: 20,
                                             paddingBlock: 10,
                                             letterSpacing: 2.5,
-                                            borderRadius:SIZES.radius,
+                                            borderRadius:3,
 
                                             // borderRadius:SIZES.base,
                                             width: '80%',
@@ -260,7 +261,7 @@ export default function SideNav({
                                             paddingBlock: 10,
                                             letterSpacing: 2.5,
                                             paddingBottom:20,
-                                            borderRadius:SIZES.radius,
+                                            borderRadius:3,
 
                                             // borderRadius:SIZES.base,
                                             width: '80%',

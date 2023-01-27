@@ -182,14 +182,14 @@ export const SideNavModal = ({
                             alignSelf: !mobile ? "flex-start" : "center",
                             marginLeft: !mobile ? 50 : 0,
                             // borderRadius: SIZES.base,
-                            backgroundColor: Name === "Setting" ? COLORS.transparentPrimary : COLORS.transparent,
-                            color: Name === "Setting" ? COLORS.black : COLORS.gray,
+                            backgroundColor: Name === "Animal" ? COLORS.transparentPrimary : COLORS.transparent,
+                            color: Name === "Animal" ? COLORS.black : COLORS.gray,
 
 
                         }}
                         onClick={() => {
-                            setComp(React.lazy(() => import("../Comp/Settings")))
-                            setName("Setting")
+                            setComp(React.lazy(() => import("../Comp/Animal")))
+                            setName("Animal")
                             setIsOpen(false)
                         }}
                     >

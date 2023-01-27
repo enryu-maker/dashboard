@@ -31,7 +31,9 @@ export const TitleCard = ({
       }}
       onClick={onPress}
       >
-        <p style={{
+        {
+          label?
+          <p style={{
             display:"flex",
             justifyContent:"flex-start",
             alignItems:"center",
@@ -42,7 +44,9 @@ export const TitleCard = ({
             color:COLORS.gray
         }}>
            <Icon size={26} color={COLORS.gray} />&nbsp;{label}
-        </p>
+        </p>:null
+        }
+        
         
         {appendComponent}
       </button>
