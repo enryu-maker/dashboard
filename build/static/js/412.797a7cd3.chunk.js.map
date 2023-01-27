@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/412.797a7cd3.chunk.js","mappings":"6KAEe,SAASA,IACtB,OACE,yBAAK,YAET,C","sources":["Comp/Settings.js"],"sourcesContent":["import React from 'react'\n\nexport default function Settings() {\n  return (\n    <div>Settings</div>\n  )\n}\n"],"names":["Settings"],"sourceRoot":""}
