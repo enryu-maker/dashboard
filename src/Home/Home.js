@@ -20,7 +20,7 @@ export const Home = ({
             alignItems: 'center',
             width:  '100%',
             height: '100vh',
-            backgroundColor: COLORS.white
+            backgroundColor: COLORS.layout
         }}>
             <Helmet>
                 <title>Admin : Home</title>

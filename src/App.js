@@ -8,14 +8,17 @@ import { SideNavModal } from './Component.js/SideNavModal';
 
 import MinFooter from './Component.js/MinFooter';
 import { Routes, Route } from "react-router-dom";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { Init } from './Store/actions';
 const App = () => {
   const [show, setShow] = React.useState(false)
   const [Name, setName] = React.useState("Home")
   const [Comp, setComp] = React.useState(React.lazy(() => import("./Comp/HomeComp")))
- 
+  const dispatch = useDispatch()
   
-  
+  React.useEffect(() => {
+    dispatch(Init())
+  }, [])
   const HomeNav = () => {
     return (
       <div style={{
@@ -25,14 +28,14 @@ const App = () => {
         height: "100vh",
         alignSelf: "center",
         // justifyContent:"space-between",
-        backgroundColor: COLORS.white
+        backgroundColor: COLORS.layout
       }}>
         <div style={{
           display: "flex",
           width: "100%",
           alignSelf: "center",
           // justifyContent:"space-between",
-          backgroundColor: COLORS.white
+          backgroundColor: COLORS.layout
         }}>
      <SideNav show={show} setShow={setShow} Name={Name} setName={setName} setComp={setComp} />
         {

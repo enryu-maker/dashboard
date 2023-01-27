@@ -1,5 +1,5 @@
 import React from 'react'
-import { COLORS, FONTS } from '../Theme/Theme'
+import { COLORS, FONTS, SIZES } from '../Theme/Theme'
 import { IMAGES } from '../Theme/Image'
 import useMediaQuery from '../utils/useMediaQuery'
 import "../CSS/constant.css"
@@ -71,16 +71,19 @@ export default function SideNav({
                         // flexDirection: 'row',
                         justifyContent: "space-between",
                         // alignItems: 'center',
-                        width: '25%',
+                        width: '28%',
                         backgroundColor: COLORS.white,
-
-                        height: '100vh',
+                        borderRadius: 3,
+                        margin:20,
+                        height: '90vh',
                     }}>
                         <div style={{
                             display: "flex",
                             flexDirection: "column",
                             alignItems: "center",
                             width: "100%",
+                        borderRadius: 25,
+
                             // alignSelf:"center",
                             backgroundColor: COLORS.white,
                         }}>
@@ -111,7 +114,7 @@ export default function SideNav({
                                             ...FONTS.h3,
                                             paddingInline: 20,
                                             paddingBlock: 10,
-                                            // borderRadius:SIZES.base,
+                                            borderRadius:3,
                                             width: '80%',
                                             backgroundColor: Name === "Home" ? COLORS.transparentPrimary : COLORS.transparent,
                                             alignSelf: "center",
@@ -139,6 +142,7 @@ export default function SideNav({
                                             paddingInline: 20,
                                             paddingBlock: 10,
                                             letterSpacing: 2.5,
+                                            borderRadius:SIZES.radius,
 
                                             // borderRadius:SIZES.base,
                                             width: '80%',
@@ -160,8 +164,9 @@ export default function SideNav({
                                             flexDirection: 'row',
                                             alignItems: 'center',
                                             justifyContent: 'flex-start',
-                                            color: Name === "Profile" ? COLORS.black : COLORS.gray,
+                                            color: Name === "Animal" ? COLORS.black : COLORS.gray,
                                             ...FONTS.h3,
+                                            borderRadius:SIZES.radius,
 
                                             paddingInline: 20,
                                             paddingBlock: 10,
@@ -169,14 +174,14 @@ export default function SideNav({
 
                                             // borderRadius:SIZES.base,
                                             width: '80%',
-                                            backgroundColor: Name === "Profile" ? COLORS.transparentPrimary : COLORS.transparent,
+                                            backgroundColor: Name === "Animal" ? COLORS.transparentPrimary : COLORS.transparent,
                                             alignSelf: "center",
 
 
                                         }}
                                         onClick={() => {
-                                            setComp(React.lazy(() => import("../Comp/Settings")))
-                                            setName("Setting")
+                                            setComp(React.lazy(() => import("../Comp/Animal")))
+                                            setName("Animal")
                                         }}
                                     >
                                         <TbPig />&nbsp;Animals
@@ -190,6 +195,7 @@ export default function SideNav({
                                             justifyContent: 'flex-start',
                                             color: Name === "Setting" ? COLORS.black : COLORS.gray,
                                             letterSpacing: 2.5,
+                                            borderRadius:SIZES.radius,
 
                                             ...FONTS.h3,
 
@@ -231,6 +237,8 @@ export default function SideNav({
                                             paddingInline: 20,
                                             paddingBlock: 10,
                                             letterSpacing: 2.5,
+                                            borderRadius:SIZES.radius,
+
                                             // borderRadius:SIZES.base,
                                             width: '80%',
                                             backgroundColor: Name === "About" ? COLORS.layout : COLORS.transparent,
@@ -251,6 +259,8 @@ export default function SideNav({
                                             paddingInline: 20,
                                             paddingBlock: 10,
                                             letterSpacing: 2.5,
+                                            paddingBottom:20,
+                                            borderRadius:SIZES.radius,
 
                                             // borderRadius:SIZES.base,
                                             width: '80%',
@@ -266,12 +276,6 @@ export default function SideNav({
 
 
                         </div>
-                        <div style={{
-                            height: "100vh",
-                            width: 2.5,
-                            backgroundColor: COLORS.lightGray1
-                        }} />
-
                     </div>
             }
         </>

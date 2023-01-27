@@ -17,7 +17,7 @@ export const COLORS={
     transparent: "transparent",
     red: "#ff4d4d",
     green: "#27AE60",
-    layout:"#E6E2DD",
+    layout:"#f3f3f3",
     // E6E2DD
     yellow:'#ffdf00'
 }

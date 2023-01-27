@@ -5,8 +5,37 @@ import useMediaQuery from '../utils/useMediaQuery'
 import { AiOutlineUser } from "react-icons/ai";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, PieChart, Pie, Cell } from 'recharts';
 import { TbPig } from 'react-icons/tb'
-
+import axiosIns from '../utils/helpers';
 export default function HomeComp() {
+    const[Animal,setAnimal]=React.useState([])
+    const[User,setUser]=React.useState([])
+
+    function getAnimal(){
+        var animal=[]
+        axiosIns.get("/animalcount/").then((res) => {
+            Object.entries(res.data).forEach(([k,v]) => {
+              animal.push({
+                'name':k,
+                'count':v
+              })
+          })
+            setAnimal(animal)
+          })
+    }
+    function getUser(){
+        axiosIns.get("/getusersmonthly/").then((res) => {
+            setUser(res.data)
+          }).catch((err)=>{
+                console.log(err)
+            })
+    }
+
+    React.useEffect(() => {
+        getUser()
+        getAnimal()
+    }, [])
+    
+    
     const matches = useMediaQuery('(min-width:819px)')
     const mobile = useMediaQuery('(min-width:600px)')
     const CustomTooltip = ({ active, payload, label }) => {
@@ -28,7 +57,7 @@ export default function HomeComp() {
 
     const pdata = [
         {
-            name: 'Jan',
+            name: 'JAN-22',
             student: 11,
             fees: 120
         },
@@ -125,40 +154,6 @@ export default function HomeComp() {
         },
     ];
 
-    const animal = [
-        {
-            name: 'Cow',
-            student: 130,
-
-        },
-        {
-            name: 'Goat',
-            student: 70,
-
-        },
-        {
-            name: 'Pig',
-            student: 50,
-
-        },
-        {
-            name: 'Sheep',
-            student: 90,
-
-        },
-        {
-            name: 'Rabbit',
-            student: 100,
-
-        },
-        {
-            name: 'Horse',
-            student: 80,
-
-        },
-
-    ]
-
     const pieData = [
         { name: 'Android', value: 300 },
         { name: 'IOS', value: 300 },
@@ -188,16 +183,11 @@ export default function HomeComp() {
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
-            backgroundColor: COLORS.white,
+            backgroundColor: COLORS.layout,
             ...FONTS.body2,
-            paddingBlockStart: 20,
+            paddingBlockStart: 10,
             paddingBlockEnd: 70
         }}>
-            <div style={{
-                height: "3px",
-                width: "88%",
-                backgroundColor: COLORS.lightGray1
-            }} />
             <TitleCard
                 Icon={AiOutlineUser}
                 label={"Active Users"}
@@ -205,9 +195,9 @@ export default function HomeComp() {
                     // alert("Active User")
                 }}
                 appendComponent={
-                    <LineChart width={mobile ? !matches ? 700 : 900 : 350} height={400} data={pdata} margin={{ top: 25, right: 30, bottom: mobile ? 10 : 50, left: -15 }} >
+                    <LineChart width={mobile ? !matches ? 700 : 900 : 350} height={400} data={User} margin={{ top: 25, right: 30, bottom: mobile ? 10 : 50, left: -15 }} >
                         <CartesianGrid strokeDasharray="3 3" stroke={COLORS.transparentPrimary} />
-                        <XAxis dataKey={"name"} angle={matches ? 0 : -270} tickMargin={matches ? 10 : 30} style={{
+                        <XAxis dataKey={"date"} angle={matches ? 0 : -270} tickMargin={matches ? 10 : 30} style={{
                             ...FONTS.h4,
                             backgroundColor: COLORS.Primary
                         }}
@@ -221,19 +211,13 @@ export default function HomeComp() {
 
                         <Tooltip content={<CustomTooltip />} />
                         {/* <Legend/> */}
-                        <Line type="monotoneX" dataKey="student" stroke={COLORS.Primary} strokeWidth={2}
+                        <Line type="monotoneX" dataKey="count" stroke={COLORS.Primary} strokeWidth={2}
                             dot={{ stroke: COLORS.Primary, strokeWidth: 1, r: 5, strokeDasharray: '' }}
 
                         />
                     </LineChart>
                 }
             />
-            <div style={{
-                height: "3px",
-
-                width: "88%",
-                backgroundColor: COLORS.lightGray1
-            }} />
             <TitleCard
                 Icon={AiOutlineUser}
                 label={"New Users"}
@@ -294,11 +278,6 @@ export default function HomeComp() {
                     </div>
                 }
             />
-            <div style={{
-                height: "3px",
-                width: "88%",
-                backgroundColor: COLORS.lightGray1
-            }} />
             <TitleCard
                 Icon={TbPig}
                 label={"Animals"}
@@ -306,7 +285,7 @@ export default function HomeComp() {
                     // alert("Active User")
                 }}
                 appendComponent={
-                    <LineChart width={mobile ? !matches ? 700 : 900 : 350} height={400} data={animal} margin={{ top: 25, right: 30, bottom: mobile ? 10 : 50, left: -15 }} >
+                    <LineChart width={mobile ? !matches ? 700 : 900 : 350} height={400} data={Animal} margin={{ top: 25, right: 30, bottom: mobile ? 10 : 50, left: -15 }} >
                         <CartesianGrid strokeDasharray="3 3" stroke={COLORS.transparentPrimary} />
                         <XAxis dataKey={"name"} angle={matches ? 0 : -270} tickMargin={matches ? 10 : 30} style={{
                             ...FONTS.h4,
@@ -322,19 +301,13 @@ export default function HomeComp() {
 
                         <Tooltip content={<CustomTooltip />} />
                         {/* <Legend/> */}
-                        <Line type="monotoneX" dataKey="student" stroke={COLORS.Primary} strokeWidth={2}
+                        <Line type="monotoneX" dataKey="count" stroke={COLORS.Primary} strokeWidth={2}
                             dot={{ stroke: COLORS.Primary, strokeWidth: 1, r: 5, strokeDasharray: '' }}
 
                         />
                     </LineChart>
                 }
             />
-            <div style={{
-                height: "3px",
-                width: "88%",
-                backgroundColor: COLORS.lightGray1
-            }} />
-
         </div>
 
 

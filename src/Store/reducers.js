@@ -1,5 +1,6 @@
 const initialState={
-    access:"null",
+    access:null,
+    animal:[]
 }
 
 
@@ -9,6 +10,11 @@ export default (state = initialState, action) => {
         return {
           ...state,
           access: action.payload,
+        };
+      case 'ANIMAL':
+        return {
+          ...state,
+          animal: action.payload,
         };
 
         default:

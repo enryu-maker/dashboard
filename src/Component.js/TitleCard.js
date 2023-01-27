@@ -23,8 +23,9 @@ export const TitleCard = ({
         alignItems:"center",
         // height:"150px",
         width:mobile ? !matches ? 700 : 1000 : 350,
-        margin:5,
-        backgroundColor:COLORS.transparent,
+        margin:10,
+        backgroundColor:COLORS.white,
+        borderRadius:3,
         alignSelf:"center",
         ...container
       }}
