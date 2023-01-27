@@ -1,5 +1,5 @@
 import React from 'react'
-import { COLORS, FONTS } from '../Theme/Theme'
+import { COLORS } from '../Theme/Theme'
 import useMediaQuery from '../utils/useMediaQuery'
 import '../CSS/constant.css'
 

@@ -1,4 +1,4 @@
-import axiosIns from "../utils/helpers";
+
 
 export const Init = () => {
     return async dispatch => {
@@ -21,16 +21,7 @@ export const Init = () => {
       })
     }
   }
-  export const getAnimal = (token) => {
-    var animal=[];
-    axiosIns.get("/animalcount/").then((res) => {
-      Object.entries(res.data).forEach(([k,v]) => {
-        animal.push({
-          'name':k,
-          'count':v
-        })
-    })
-    })
+  export const getAnimals = (animal) => {
     return async dispatch => {
       dispatch({
         type: 'ANIMAL',

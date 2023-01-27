@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/429.a9556cfa.chunk.js","mappings":"6KAEe,SAASA,IACtB,OACE,yBAAK,UAET,C","sources":["Comp/Animal.js"],"sourcesContent":["import React from 'react'\n\nexport default function Animal() {\n  return (\n    <div>Animal</div>\n  )\n}\n"],"names":["Animal"],"sourceRoot":""}

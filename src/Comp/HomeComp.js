@@ -7,11 +7,13 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, PieChart, Pie, C
 import { TbPig } from 'react-icons/tb'
 import axiosIns from '../utils/helpers';
 import { MdOutlinePaid } from "react-icons/md";
+import { useDispatch } from 'react-redux';
+import { getAnimals } from '../Store/actions';
 
 export default function HomeComp() {
     const [Animal, setAnimal] = React.useState([])
     const [User, setUser] = React.useState([])
-
+    const dispatch = useDispatch()
     function getAnimal() {
         var animal = []
         axiosIns.get("/animalcount/").then((res) => {
@@ -21,6 +23,7 @@ export default function HomeComp() {
                     'count': v
                 })
             })
+            dispatch(getAnimals(animal))
             setAnimal(animal)
         })
     }
@@ -57,67 +60,7 @@ export default function HomeComp() {
         return null;
     };
 
-    const pdata = [
-        {
-            name: 'JAN-22',
-            student: 11,
-            fees: 120
-        },
-        {
-            name: 'Feb',
-            student: 15,
-            fees: 12
-        },
-        {
-            name: 'Mar',
-            student: 5,
-            fees: 10
-        },
-        {
-            name: 'April',
-            student: 10,
-            fees: 5
-        },
-        {
-            name: 'May',
-            student: 9,
-            fees: 4
-        },
-        {
-            name: 'June',
-            student: 10,
-            fees: 8
-        },
-        {
-            name: 'July',
-            student: 3,
-            fees: 5
-        },
-        {
-            name: 'Aug',
-            student: 20,
-            fees: 5
-        },
-        {
-            name: 'Sept',
-            student: 10,
-            fees: 5
-        },
-        {
-            name: 'Oct',
-            student: 0,
-            fees: 5
-        },
-        {
-            name: 'Nov',
-            student: 0,
-            fees: 5
-        }, {
-            name: 'Dec',
-            student: 0,
-            fees: 5
-        },
-    ];
+    
     const Wdata = [
         {
             name: 'Sun',
