@@ -11,7 +11,8 @@ export default function Loading() {
         justifyContent:"center",
         borderRadius: SIZES.radius,
         borderWidth: 0,
-        height: 50,
+        height: "100vh",
+        alignItems:"center",
         marginTop:"20px"
       }}>
         <ReactLoading type={'spin'} color={COLORS.Primary} height={50} width={50}  />

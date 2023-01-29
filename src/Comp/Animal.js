@@ -1,16 +1,33 @@
 import React from 'react'
 import { COLORS, FONTS } from '../Theme/Theme'
 import { TitleCard } from '../Component.js/TitleCard'
-import { BarChart, Bar, CartesianGrid, XAxis, YAxis, Tooltip, PieChart, Pie, Cell } from 'recharts';
+import { BarChart, Bar, CartesianGrid, XAxis, YAxis, Tooltip, PieChart, Pie, Cell, Legend } from 'recharts';
 import useMediaQuery from '../utils/useMediaQuery'
 import { useSelector } from 'react-redux';
 import { TbPig } from 'react-icons/tb'
+import axiosIns from '../utils/helpers';
+import Loading from '../Component.js/Loading';
 
 export default function Animal() {
   const matches = useMediaQuery('(min-width:819px)')
   const mobile = useMediaQuery('(min-width:600px)')
   const Animal = useSelector(state => state.Reducers.animal)
-  const color = [COLORS.transparentPrimary, COLORS.transparentPrimary2, '#FFBB28', '#FF8042']
+  const [species, setSpecies] = React.useState([])
+  const [loading, setLoading] = React.useState(false)
+  function getSpecies(){
+    setLoading(true)
+    axiosIns.get("/animalsubspeciescount/").then((res) => {
+      setSpecies(res.data)
+      setLoading(false)
+  }).catch((err) => {
+      console.log(err)
+      setLoading(false)
+  })
+  }
+  React.useEffect(() => {
+    getSpecies()
+  }, [])
+  const color = [COLORS.transparentPrimary, COLORS.transparentPrimary2, '#FFBB28', '#FF8042',"#F09BB6",'#452063']
   const RADIAN = Math.PI / 180;
   const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, name, index }) => {
     const radius = innerRadius + (outerRadius - innerRadius) * 0.3;
@@ -27,44 +44,6 @@ export default function Animal() {
       </text>
     );
   };
-  const Data = [
-    {
-      img:"",
-      name: 'Cow',
-      d: [
-        {
-          name: "count1",
-          count: 4000,
-        },
-        {
-          name: "count2",
-          count: 2400,
-        },
-        {
-          name: "count3",
-          count: 2400,
-        }
-      ]
-    },
-    {
-      img:"",
-      name: 'Goat',
-      d: [
-        {
-          name: "count1",
-          count: 4000,
-        },
-        {
-          name: "count2",
-          count: 2400,
-        },
-        {
-          name: "count3",
-          count: 2400,
-        }
-      ]
-    }
-  ]
 
   return (
     <div style={{
@@ -78,7 +57,10 @@ export default function Animal() {
       paddingBlockStart: 10,
       paddingBlockEnd: 70
     }}>
-
+      {
+        loading? <Loading/>
+      :
+      <>
       <TitleCard
         Icon={TbPig}
         label={"Animals"}
@@ -93,7 +75,7 @@ export default function Animal() {
         }
       />
       {
-        Data.map((item, index) => {
+        species.map((item, index) => {
           return (
             <TitleCard
               Icon={TbPig}
@@ -130,7 +112,9 @@ export default function Animal() {
                         {item.d.map((entry, index) => (
                           <Cell key={`cell-${index}`} fill={color[index % color.length]} />
                         ))}
+
                       </Pie>
+                      <Legend/>
                       {/* <Tooltip/> */}
                     </PieChart>
                   </div>
@@ -141,6 +125,8 @@ export default function Animal() {
           )
         }
         )
+      }
+      </>
       }
     </div>
   )
