@@ -13,6 +13,7 @@ import { Init } from './Store/actions';
 const App = () => {
   const [show, setShow] = React.useState(false)
   const [Name, setName] = React.useState("Home")
+  
   const [Comp, setComp] = React.useState(React.lazy(() => import("./Comp/HomeComp")))
   const dispatch = useDispatch()
   
@@ -51,6 +52,7 @@ const App = () => {
   
   
   const access = useSelector(state => state.Reducers.access)
+  console.log(access)
 
   return (
     

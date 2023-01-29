@@ -6,7 +6,8 @@ import { AiOutlineClose } from "react-icons/ai";
 import { AiOutlineHome, AiOutlineSetting, AiOutlineUser, AiOutlineLogout } from "react-icons/ai";
 import { GoIssueOpened } from 'react-icons/go'
 import { TbPig } from 'react-icons/tb'
-
+import { useDispatch, useSelector } from 'react-redux';
+import { Logout } from '../Store/actions';
 import '../CSS/constant.css'
 import { IMAGES } from '../Theme/Image';
 export const SideNavModal = ({
@@ -16,11 +17,10 @@ export const SideNavModal = ({
     setIsOpen,
     setComp
 }) => {
-
+    const dispatch = useDispatch()
     const mobile = useMediaQuery('(min-width:860px)')
     let subtitle;
     function afterOpenModal() {
-        // references are now sync'd and can be accessed.
         subtitle.style.color = COLORS.Primary;
     }
 
@@ -33,6 +33,7 @@ export const SideNavModal = ({
             isOpen={modalIsOpen}
             onAfterOpen={afterOpenModal}
             onRequestClose={closeModal}
+            ariaHideApp={false}
             style={{
                 overlay: {
                     backgroundColor: COLORS.white,
@@ -64,7 +65,7 @@ export const SideNavModal = ({
                 justifyContent: "space-between",
                 height: 60,
                 width: "100%",
-                backgroundColor:COLORS.Primary,
+                backgroundColor: COLORS.Primary,
                 // paddingBlock: 2,
 
             }}>
@@ -103,7 +104,7 @@ export const SideNavModal = ({
                 // height: '100vh',
             }}>
                 <div style={{
-                    paddingTop:20,
+                    paddingTop: 20,
                     display: 'flex',
                     flexDirection: "column",
                     // justifyContent: "space-between",
@@ -173,7 +174,7 @@ export const SideNavModal = ({
                             flexDirection: 'row',
                             alignItems: 'center',
                             justifyContent: 'flex-start',
-                        
+
                             ...FONTS.body2,
                             letterSpacing: 2,
                             paddingInline: 20,
@@ -253,11 +254,11 @@ export const SideNavModal = ({
 
                             marginLeft: !mobile ? 50 : 0,
                             backgroundColor: Name === "About" ? COLORS.transparentPrimary : COLORS.transparent,
-                            
+
 
                         }}
                         onClick={() => {
-                            setComp(React.lazy(() => import("../Comp/Settings")))
+                            setComp(React.lazy(() => import("../Comp/About")))
                             setName("About")
                             setIsOpen(false)
                         }}
@@ -281,9 +282,14 @@ export const SideNavModal = ({
                             alignSelf: !mobile ? "flex-start" : "center",
                             marginLeft: !mobile ? 50 : 0,
                             backgroundColor: COLORS.transparent,
-                            
 
-                        }}>
+
+                        }}
+                        onClick={() => {
+                            dispatch(Logout())
+                            window.location.reload(false)
+                        }}
+                    >
                         <AiOutlineLogout color={COLORS.red} />&nbsp;Logout
                     </button>
 

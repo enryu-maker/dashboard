@@ -6,7 +6,8 @@ import "../CSS/constant.css"
 import { AiOutlineLineChart, AiOutlineSetting, AiOutlineUser, AiOutlineLogout, AiOutlineMenu } from "react-icons/ai";
 import { GoIssueOpened } from 'react-icons/go'
 import { TbPig } from 'react-icons/tb'
-
+import { useDispatch } from 'react-redux'
+import { Logout } from '../Store/actions'
 
 export default function SideNav({
     show,
@@ -17,6 +18,7 @@ export default function SideNav({
 }) {
     const matches = useMediaQuery('(max-width:820px)')
     // const mobile = useMediaQuery('(min-width:600px)')
+    const dispatch = useDispatch()
     return (
         <>
             {
@@ -233,7 +235,7 @@ export default function SideNav({
                                             flexDirection: 'row',
                                             alignItems: 'center',
                                             justifyContent: 'flex-start',
-                                            color: COLORS.gray,
+                                            color: Name === "About" ? COLORS.black : COLORS.gray,
                                             ...FONTS.body3,
                                             paddingInline: 20,
                                             paddingBlock: 10,
@@ -242,11 +244,17 @@ export default function SideNav({
 
                                             // borderRadius:SIZES.base,
                                             width: '80%',
-                                            backgroundColor: Name === "About" ? COLORS.layout : COLORS.transparent,
+                                            backgroundColor: Name === "About" ? COLORS.transparentPrimary : COLORS.transparent,
+
                                             alignSelf: "center",
 
-                                        }}>
-                                        <GoIssueOpened color={COLORS.gray} style={{ transform: 'rotate(180deg)' }} />&nbsp;About
+                                        }}
+                                        onClick={() => {
+                                            setComp(React.lazy(() => import("../Comp/About")))
+                                            setName("About")
+                                        }}
+                                        >
+                                        <GoIssueOpened style={{ transform: 'rotate(180deg)' }} />&nbsp;About
                                     </button>
                                     <button
                                         className='button'
@@ -262,13 +270,16 @@ export default function SideNav({
                                             letterSpacing: 2.5,
                                             paddingBottom:20,
                                             borderRadius:3,
-
                                             // borderRadius:SIZES.base,
                                             width: '80%',
                                             // backgroundColor: Name==="Logout"?COLORS.layout:COLORS.transparent,
                                             alignSelf: "center",
-
-                                        }}>
+                                        }}
+                                        onClick={() => {
+                                            dispatch(Logout())
+                                            window.location.reload(false)
+                                        }}
+                                        >
                                         <AiOutlineLogout color={COLORS.red} />&nbsp;Logout
                                     </button>
 

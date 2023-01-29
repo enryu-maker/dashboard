@@ -6,7 +6,6 @@ import { AiOutlineUser, AiOutlineMobile } from "react-icons/ai";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, PieChart, Pie, Cell } from 'recharts';
 import { TbPig } from 'react-icons/tb'
 import axiosIns from '../utils/helpers';
-import { MdOutlinePaid } from "react-icons/md";
 import { useDispatch } from 'react-redux';
 import { getAnimals } from '../Store/actions';
 import Loading from '../Component.js/Loading';
@@ -16,7 +15,7 @@ export default function HomeComp() {
     const [User, setUser] = React.useState([])
     const [Wuser, setWuser] = React.useState([])
     const [loading, setLoading] = React.useState(false)
-
+    
     const dispatch = useDispatch()
     function getAnimal() {
         setLoading(true)
@@ -82,44 +81,7 @@ export default function HomeComp() {
     };
 
 
-    const Wdata = [
-        {
-            name: 'Sun',
-            student: 11,
-            fees: 120
-        },
-        {
-            name: 'Mon',
-            student: 15,
-            fees: 12
-        },
-        {
-            name: 'Tue',
-            student: 5,
-            fees: 10
-        },
-        {
-            name: 'Wed',
-            student: 10,
-            fees: 5
-        },
-        {
-            name: 'Thu',
-            student: 9,
-            fees: 4
-        },
-        {
-            name: 'Fri',
-            student: 10,
-            fees: 8
-        },
-        {
-            name: 'Sat',
-            student: 3,
-            fees: 5
-        },
-    ];
-
+   
     const pieData = [
         { name: 'Android', value: 300 },
         { name: 'IOS', value: 300 },
