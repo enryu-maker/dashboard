@@ -112,7 +112,7 @@ export default function Profile() {
               user.map((item, index) => {
                 return (
                   <UserCard item={item} onPress={()=>{
-                    alert(index)}}/>
+                    alert(item.subscription)}}/>
                 )
               })
             }

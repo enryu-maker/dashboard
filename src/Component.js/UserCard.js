@@ -11,6 +11,7 @@ export default function UserCard({
 }) {
     const matches = useMediaQuery('(min-width:819px)')
     const mobile = useMediaQuery('(min-width:600px)')
+    console.log(item)
     return (
         <button
             className='button'
@@ -86,14 +87,13 @@ export default function UserCard({
             :null
             }
             {
-                item.is_active ? <div style={{
+                item?.subscription? <div style={{
                     ...FONTS.h3,
                     backgroundColor: COLORS.green,
                     height:20,
                     width: 20,
                     borderRadius: 15,
                     marginLeft: !mobile? 10: 0,
-
                 }} />
                     : <div style={{
                         ...FONTS.h3,
@@ -102,9 +102,6 @@ export default function UserCard({
                         width:20,
                         borderRadius: 15,
                         marginLeft: !mobile? 10: 0,
-
-
-
                     }} />
             }
             </div>

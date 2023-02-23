@@ -287,7 +287,7 @@ export const SideNavModal = ({
                         }}
                         onClick={() => {
                             dispatch(Logout())
-                            window.location.reload(false)
+                            window.location.reload(false) 
                         }}
                     >
                         <AiOutlineLogout color={COLORS.red} />&nbsp;Logout
